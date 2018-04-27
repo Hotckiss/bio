@@ -67,6 +67,7 @@ int main() {
 	}
 	sort(all_scans.begin(), all_scans.end());
 
+	cout << all_scans.size() << "\n";
 	for (peptide &p : all_scans) {
 		cout << p.scan_number << " " << p.peptid << "\n";
 	}
