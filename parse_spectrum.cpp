@@ -5,6 +5,8 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include "painter.h"
+
 using namespace std;
 
 class peptide {
@@ -15,15 +17,17 @@ public:
 	vector<long double> actual_masses;
 };
 
-const long double eps = 2e-2;
+const long double eps = 2e-1;
 const long double val = 57.021;
+const long double h2o = 18.010157;
+const long double nh3 = 17.030215;
 
 vector<peptide> all_peptides;
 map<int, string> pept_by_scan;
+map<int, long double> evalue_by_scan;
 map<char, long double> amino_mass;
+vector<pair<int, string>> listed_scans;
 
-map<string, vector<long double>> pref_sums;
-map<string, vector<long double>> suf_sums;
 vector<long double> get_prefix_sums(string pept) {
 	size_t pos = pept.find("+57.021");
 	if (pos != string::npos) {
@@ -45,7 +49,7 @@ vector<long double> get_prefix_sums(string pept) {
 		}
 	}
 
-	return ans;
+	return ans; //18.010157
 }
 
 vector<long double> get_suffix_sums(string pept) {
@@ -93,10 +97,8 @@ void init() {
 	amino_mass['Y'] = 163.06333;
 	amino_mass['V'] = 99.06841;
 }
-int main() {
-	freopen("piq.msalign", "r", stdin);
-	freopen("annotations.txt", "w", stdout);
-	init();
+
+void parse() {
 	while (true) {
 		string str;
 		getline(cin, str, '\n');
@@ -141,8 +143,10 @@ int main() {
 			break;
 		}
 	}
+}
 
-	ifstream input ("table.txt", ifstream::in);
+void fill_pept_by_scan() {
+	ifstream input("table2.txt", ifstream::in);
 
 	int n;
 	input >> n;
@@ -150,31 +154,45 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		int sn;
 		string pept;
-		
-		input >> sn >> pept;
+		long double evalue;
+		input >> sn >> pept >> evalue;
 
+		listed_scans.push_back({sn, pept});
 		pept_by_scan[sn] = pept;
+		evalue_by_scan[sn] = evalue;
 	}
 
 	input.close();
+}
 
+inline bool has_small_evalue(int scan) {
+	return evalue_by_scan.find(scan) != evalue_by_scan.end();
+}
+
+void resume_annotated() {
 	cout << "SELECTED DETECTION ERROR = " << eps << "\n\n";
 	for (peptide &p : all_peptides) {
 		string pept(pept_by_scan[p.scan_number]);
-		if (pept.empty())
+		if (pept.empty() || !has_small_evalue(p.scan_number))
 			continue;
 		vector<long double> pref_sums = get_prefix_sums(pept);
 		vector<long double> suf_sums = get_suffix_sums(pept);
 		vector<int> detected_pref;
 		vector<int> detected_suf;
+		vector<double> detected_pref1;
+		vector<double> detected_suf1;
 		for (long double mass : p.actual_masses) {
 			for (int i = 0; i < pref_sums.size(); i++)
-				if (abs(mass - pref_sums[i]) < eps)
+				if (abs(mass - pref_sums[i]) < eps) {
 					detected_pref.push_back(i);
+					detected_pref1.push_back(mass);
+				}
 
-			for (int i = 0; i < suf_sums.size(); i++)
-				if (abs(mass - suf_sums[i]) < eps)
+			for (int i = 0; i < suf_sums.size(); i++) // 17.021 - N; 18.010157 - H2O
+				if (abs(mass - suf_sums[i] - 18.010157) < eps) {
 					detected_suf.push_back(i);
+					detected_suf1.push_back(mass);
+				}
 		}
 		if (detected_pref.size() + detected_suf.size() > 0) {
 			cout << "Detected for peptide " << pept << ":\n" << "SCAN = " << p.scan_number << "; FRAG METHOD = " << p.frag_method << "; PRECURSOR MASS = " << p.precursor_mass << "; CHARGE = " << p.precursor_charge << "\n\n";
@@ -185,16 +203,129 @@ int main() {
 			}
 
 			for (int i = 0; i < detected_pref.size(); i++) {
-				cout << "Prefix " << pept.substr(0, detected_pref[i] + 1) << "; MASS = " << pref_sums[detected_pref[i]] << "\n";
+				cout << "Prefix " << pept.substr(0, detected_pref[i] + 1) << "; MASS = " << pref_sums[detected_pref[i]] << "; ACTUAL = " << detected_pref1[i] << "; DELTA = " << pref_sums[detected_pref[i]] - detected_pref1[i] << "\n";
 			}
 
 			for (int i = 0; i < detected_suf.size(); i++) {
-				cout << "Suffix " << pept.substr(pept.length() - 1 - detected_suf[i], pept.length()) << "; MASS = " << suf_sums[detected_suf[i]] << "\n";
+				cout << "Suffix " << pept.substr(pept.length() - 1 - detected_suf[i], pept.length()) << "; MASS = " << suf_sums[detected_suf[i]] << "; ACTUAL = " << detected_suf1[i] << "; DELTA = " << suf_sums[detected_suf[i]] + 18.010157 - detected_suf1[i] << "\n";
 			}
 
 			cout << "------------------------\n\n\n";
 		}
 	}
+}
+
+void build_annotated_positions() {
+	ofstream ofs("percentage.txt", ofstream::out);
+
+	for (int i = 0; i < all_peptides.size() - 1; i++) {
+		peptide p1 = all_peptides[i];
+		peptide p2 = all_peptides[i + 1];
+
+		if (p1.scan_number + 1 != p2.scan_number)
+			continue;
+
+		if (!(has_small_evalue(p1.scan_number) && has_small_evalue(p2.scan_number)))
+			continue;
+
+		if (pept_by_scan[p1.scan_number] != pept_by_scan[p2.scan_number])
+			continue;
+
+		//else we have pair of scans with good evalue and same peptides
+
+		//amino sequence
+		string pept(pept_by_scan[p1.scan_number]);
+
+		//peptide without +57.021
+		string clear_pept = remove_non_amino(pept);
+
+		//all perf sums without losses h2o / nh3
+		vector<long double> pref_sums = get_prefix_sums(pept);
+		vector<long double> suf_sums = get_suffix_sums(pept);
+
+		// checking that jth position annotated
+		// pref[i] = mass of prefix of length i + 1;
+		// suff[i] = mass of suffix of length i + 1;
+		vector<int> v1; // annotated positions in p1;
+		for (int j = 0; j < clear_pept.length() - 1; j++) { // cut after j + 1 positions
+			long double pref_m = pref_sums[j]; // pref, L = j + 1;
+			long double suf_m = suf_sums[clear_pept.length() - 2 - j]; // suff, L = n - j - 1;
+			long double pref_m_h2o = pref_m - h2o;
+			long double pref_m_nh3 = pref_m - nh3;
+			long double pref_m_h2o_nh3 = pref_m - h2o - nh3;
+
+			long double suf_m_h2o = suf_m - h2o;
+			long double suf_m_nh3 = suf_m - nh3;
+			long double suf_m_h2o_nh3 = suf_m - h2o - nh3;
+			
+			bool annotated = false;
+			for (long double mass : p1.actual_masses) {
+				if ((abs(mass - pref_m) < eps) || (abs(mass - pref_m_h2o) < eps) || (abs(mass - pref_m_nh3) < eps) || (abs(mass - pref_m_h2o_nh3) < eps) ||
+					(abs(mass - suf_m) < eps) || (abs(mass - suf_m_h2o) < eps) || (abs(mass - suf_m_nh3) < eps) || (abs(mass - suf_m_h2o_nh3) < eps)) {
+					annotated = true;
+					break;
+				}
+			}
+
+			if (annotated)
+				v1.push_back(j);
+		}
+
+		vector<int> v2; // annotated positions in p1;
+		for (int j = 0; j < clear_pept.length() - 1; j++) { // cut after j + 1 positions
+			long double pref_m = pref_sums[j]; // pref, L = j + 1;
+			long double suf_m = suf_sums[clear_pept.length() - 2 - j]; // suff, L = n - j - 1;
+			long double pref_m_h2o = pref_m - h2o;
+			long double pref_m_nh3 = pref_m - nh3;
+			long double pref_m_h2o_nh3 = pref_m - h2o - nh3;
+
+			long double suf_m_h2o = suf_m - h2o;
+			long double suf_m_nh3 = suf_m - nh3;
+			long double suf_m_h2o_nh3 = suf_m - h2o - nh3;
+
+			bool annotated = false;
+			for (long double mass : p2.actual_masses) {
+				if ((abs(mass - pref_m) < eps) || (abs(mass - pref_m_h2o) < eps) || (abs(mass - pref_m_nh3) < eps) || (abs(mass - pref_m_h2o_nh3) < eps) ||
+					(abs(mass - suf_m) < eps) || (abs(mass - suf_m_h2o) < eps) || (abs(mass - suf_m_nh3) < eps) || (abs(mass - suf_m_h2o_nh3) < eps)) {
+					annotated = true;
+					break;
+				}
+			}
+
+			if (annotated)
+				v2.push_back(j);
+		}
+
+		ofs << "Pair of scans for peptide " << pept << "\n";
+		if (p1.frag_method == "HCD" && p2.frag_method == "CID") {
+			int h = std::unique(v1.begin(), v1.end()) - v1.begin();
+			int c = std::unique(v2.begin(), v2.end()) - v2.begin();
+			ofs << "For HCD precantage of annotated cuts = " << 100.0 * h / (clear_pept.length() - 1) << "%\n";
+			ofs << "For CID precantage of annotated cuts = " << 100.0 * c / (clear_pept.length() - 1) << "%\n";
+			make_picture(pept, v2, v1, p2.scan_number, p1.scan_number);
+		}
+		else if (p2.frag_method == "HCD" && p1.frag_method == "CID") {
+			int c = std::unique(v1.begin(), v1.end()) - v1.begin();
+			int h = std::unique(v2.begin(), v2.end()) - v2.begin();
+			ofs << "For HCD precantage of annotated cuts = " << 100.0 * h / (clear_pept.length() - 1) << "%\n";
+			ofs << "For CID precantage of annotated cuts = " << 100.0 * c / (clear_pept.length() - 1) << "%\n";
+			make_picture(pept, v1, v2, p1.scan_number, p2.scan_number);
+		}
+		ofs << endl;
+
+		i++;
+	}
+	ofs.close();
+}
+int main() {
+	freopen("piq.msalign", "r", stdin);
+	freopen("annotations2.txt", "w", stdout);
+
+	init();
+	parse();
+	fill_pept_by_scan();
+	//resume_annotated();
+	build_annotated_positions();
 
 	return 0;
 }
