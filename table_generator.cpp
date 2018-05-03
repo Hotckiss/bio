@@ -5,13 +5,13 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
+const long double eps = 1e-10;
 class peptide {
 public:
 	int scan_number;
 	string frag_method;
 	string peptid;
-
+	long double evalue;
 	bool operator<(const peptide& o) const {
 		return scan_number < o.scan_number;
 	}
@@ -24,7 +24,7 @@ vector<peptide> all_scans;
 
 int main() {
 	freopen("db.tsv", "r", stdin);
-	freopen("table.txt", "w", stdout);
+	freopen("table2.txt", "w", stdout);
 	string str;
 
 	getline(cin, str);
@@ -59,17 +59,22 @@ int main() {
 				p.peptid = pch;
 			}
 
+			if (id_col[id] == "EValue") {
+				p.evalue = stod(pch);
+			}
+
 			id++;
 			pch = strtok(NULL, "\t");
 		}
 
-		all_scans.push_back(p);
+		if(p.evalue < eps)
+			all_scans.push_back(p);
 	}
 	sort(all_scans.begin(), all_scans.end());
 
 	cout << all_scans.size() << "\n";
 	for (peptide &p : all_scans) {
-		cout << p.scan_number << " " << p.peptid << "\n";
+		cout << p.scan_number << " " << p.peptid << " " << p.evalue << "\n";
 	}
 	return 0;
 }
