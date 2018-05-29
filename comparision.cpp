@@ -4,6 +4,9 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include "plotter.h"
+#include "gister.h"
+#include "painter.h"
 using namespace std;
 
 class peptide {
@@ -13,10 +16,11 @@ public:
 	string peptid;
 	long double evalue;
 	long double precursor;
+	int charge;
 
 };
 
-const long double eps = 1e-10; // 10^-10, 10^-5
+const long double eps = 1e-10;
 
 const int graph_len = 70;
 map<string, int> col_id;
@@ -109,6 +113,10 @@ int main() {
 				p.peptid = pch;
 			}
 
+			if (id_col[id] == "Charge") {
+				p.charge = atoi(pch);
+			}
+
 			if (id_col[id] == "Precursor") {
 				p.precursor = stod(pch); // по Х порядок отличия по У колво пар с таким порядком, по тем где много пар 4-8. +
 			}
@@ -145,19 +153,23 @@ int main() {
 	int hnum = 0, cnum = 0;
 	int tr = (int)scans_number.size() / 3;
 	int n1 = 0, t1 = 0, n2 = 0, t2 = 0, n3 = 0, t3 = 0;
+	vector<Line> orders;
+	Line l1;
+	int cnt = 0;
 	for (int i = 0; i < scans_number.size() - 1; i++) {
 		peptide& p1 = scans_number[i];
 		peptide& p2 = scans_number[i + 1];
 
 		if (p1.scan_number + 1 == p2.scan_number) {
-			cout << "Парное измерение: #" << p1.scan_number << " #" << p2.scan_number << "\n";
+			cout << "Парное измерение: #" << p1.scan_number << " #" << p2.scan_number << "\nPeptide: " << p1.peptid << "\n";
 			if (p1.frag_method == "HCD") {
-				cout << "HCD Evalue = " << p1.evalue << "; CID EValue = " << p2.evalue << "; HCD Precursor = " << p1.precursor << "; CID Precursor = " << p2.precursor;
+				cout << "HCD Evalue = " << p1.evalue << "; CID EValue = " << p2.evalue << "; HCD Precursor(M/Z) = " << p1.precursor << " (Z = " << p1.charge << "); CID Precursor(M/Z) = " << p2.precursor << " (Z = " << p2.charge << ")";
 				cout << "\n";
 				if (p1.evalue < p2.evalue) {
 					int delta = d_exp_hcd_cid(p1.evalue, p2.evalue);
 					cout << "HCD лучше, порядок отличия Evalue = " << delta; //digit_number((long long)(p2.evalue / p1.evalue));
 																			 //hcd_exp[digit_number((long long)(p2.evalue / p1.evalue))]++;
+					l1.points.push_back({ cnt++,  delta });
 					hcd_exp[delta]++;
 				}
 				else {
@@ -165,6 +177,7 @@ int main() {
 					cout << "CID лучше, порядок отличия Evalue = " << -delta;//digit_number((long long)(p1.evalue / p2.evalue));
 																			 //cid_exp[digit_number((long long)(p1.evalue / p2.evalue))]++;
 					cid_exp[-delta]++;
+					l1.points.push_back({ cnt++,  delta });
 				}
 				cout << "\n------------------\n\n";
 				pair_hcd.push_back(p1);
@@ -206,10 +219,13 @@ int main() {
 				if (p2.evalue < p1.evalue) {
 					cout << "HCD лучше, порядок отличия Evalue = " << digit_number((long long)(p1.evalue / p2.evalue));
 					hcd_exp[digit_number((long long)(p1.evalue / p2.evalue))]++;
+					l1.points.push_back({cnt++, digit_number((long long)(p1.evalue / p2.evalue)) });
 				}
 				else {
 					cout << "CID лучше, порядок отличия Evalue = " << digit_number((long long)(p2.evalue / p1.evalue));
+
 					cid_exp[digit_number((long long)(p2.evalue / p1.evalue))]++;
+					l1.points.push_back({cnt++, -digit_number((long long)(p2.evalue / p1.evalue)) });
 				}
 				cout << "\n------------------\n\n";
 				pair_hcd.push_back(p2);
@@ -249,7 +265,9 @@ int main() {
 			no_pair.push_back(p1);
 		}
 	}
-
+	l1.color = cv::Scalar(155, 255, 100);
+	orders.push_back(l1);
+	plot_graph(-12, 20, 1, l1.points.size() + 5, 1, orders, "orders");
 	cout << "Для " << pair_cid.size() << " пар измерений результаты сравнения погрешности оказались следующие:\n";
 
 	int num_cid = (double)cid_better / (cid_better + hcd_better) * graph_len;
@@ -338,16 +356,26 @@ int main() {
 
 	cout << "\n";
 
+	vector<Line> vvvv;
+	Line l2, l3;
+	l2.color = cvScalar(0, 255, 204);
+	l3.color = cvScalar(255, 51, 204);
+
 	cout << "Распределение порядков, где лучше HCD:\n";
 	for (int i = 0; i < 20; i++) {
 		cout << hcd_exp[i] << " ";
+		l2.points.push_back({i, hcd_exp[i]});
 	}
 	cout << "\n\n";
 	cout << "Распределение порядков, где лучше CID:\n";
 
 	for (int i = 0; i < 20; i++) {
 		cout << cid_exp[i] << " ";
+		l3.points.push_back({ i, cid_exp[i] });
 	}
+	vvvv.push_back(l2);
+	vvvv.push_back(l3);
+	plot_graph(0, 15, 1, 20, 1, vvvv, "orders_compare");
 
 	cout << "\n--------------------------\n\n";
 	cout << "Гистограммы, которые для пептидов с большим количеством встретившихся пар(хотя бы 6) показывают,\nв скольких парах Evalue было меньше у HCD, и на сколько порядков, аналогично CID.";
@@ -387,7 +415,7 @@ int main() {
 					}
 				}
 			}
-
+			make_gist(16, exponent_hcd, exponent_cid, "orders_gist_" + vec.first);
 			char gist1[20][20]; // FIRST = EXP SECOND = NUMBER; gist for hcd;
 			for (int i = 0; i < 20; i++)
 				for (int j = 0; j < 20; j++)
@@ -404,7 +432,7 @@ int main() {
 					gist2[i][j] = ' ';
 
 			for (int i = 0; i < 20; i++) {
-				for (int j = 0; j < exponent_cid[i]; j++)
+				for (int j = 0; j < min(20, exponent_cid[i]); j++)
 					gist2[i][j] = 'C';
 			}
 
