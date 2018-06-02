@@ -1,0 +1,194 @@
+Assuming all avaliable detections!
+
+Total percentage of detected cuts using HCD for peptide ADYEKHKVYACEVTHQGLSSPVTK: 73.913% (17/23)
+Total percentage of detected cuts using CID for peptide ADYEKHKVYACEVTHQGLSSPVTK: 39.1304% (9/23)
+
+Total percentage of detected cuts using HCD for peptide AKGQPREPQVYTLPPSRDELTK: 38.0952% (8/21)
+Total percentage of detected cuts using CID for peptide AKGQPREPQVYTLPPSRDELTK: 4.7619% (1/21)
+
+Total percentage of detected cuts using HCD for peptide AKGQPREPQVYTLPPSRDELTKNQVSLTCLVK: 41.9355% (13/31)
+Total percentage of detected cuts using CID for peptide AKGQPREPQVYTLPPSRDELTKNQVSLTCLVK: 16.129% (5/31)
+
+Total percentage of detected cuts using HCD for peptide ALPAPIEK: 57.1429% (4/7)
+Total percentage of detected cuts using CID for peptide ALPAPIEK: 0% (0/7)
+
+Total percentage of detected cuts using HCD for peptide ALPAPIEKTISK: 18.1818% (2/11)
+Total percentage of detected cuts using CID for peptide ALPAPIEKTISK: 18.1818% (2/11)
+
+Total percentage of detected cuts using HCD for peptide ALPAPIEKTISKAK: 30.7692% (4/13)
+Total percentage of detected cuts using CID for peptide ALPAPIEKTISKAK: 0% (0/13)
+
+Total percentage of detected cuts using HCD for peptide ALPAPIEKTISKAKGQPR: 17.6471% (3/17)
+Total percentage of detected cuts using CID for peptide ALPAPIEKTISKAKGQPR: 0% (0/17)
+
+Total percentage of detected cuts using HCD for peptide ALPAPIEKTISKAKGQPREPQVYTLPPSRDELTK: 0% (0/33)
+Total percentage of detected cuts using CID for peptide ALPAPIEKTISKAKGQPREPQVYTLPPSRDELTK: 0% (0/33)
+
+Total percentage of detected cuts using HCD for peptide ASQNIDKYLNWYQQKPGK: 29.4118% (5/17)
+Total percentage of detected cuts using CID for peptide ASQNIDKYLNWYQQKPGK: 17.6471% (3/17)
+
+Total percentage of detected cuts using HCD for peptide ASQNIDKYLNWYQQKPGKAPK: 60% (12/20)
+Total percentage of detected cuts using CID for peptide ASQNIDKYLNWYQQKPGKAPK: 35% (7/20)
+
+Total percentage of detected cuts using HCD for peptide ASQNIDKYLNWYQQKPGKAPKLLIYNTNNLQTGVPSR: 41.6667% (15/36)
+Total percentage of detected cuts using CID for peptide ASQNIDKYLNWYQQKPGKAPKLLIYNTNNLQTGVPSR: 0% (0/36)
+
+Total percentage of detected cuts using HCD for peptide CKVSNKALPAPIEKTISKAK: 10.5263% (2/19)
+Total percentage of detected cuts using CID for peptide CKVSNKALPAPIEKTISKAK: 10.5263% (2/19)
+
+Total percentage of detected cuts using HCD for peptide DIQMTQSPSSLSASVGDR: 58.8235% (10/17)
+Total percentage of detected cuts using CID for peptide DIQMTQSPSSLSASVGDR: 41.1765% (7/17)
+
+Total percentage of detected cuts using HCD for peptide DIQMTQSPSSLSASVGDRVTITCK: 30.4348% (7/23)
+Total percentage of detected cuts using CID for peptide DIQMTQSPSSLSASVGDRVTITCK: 26.087% (6/23)
+
+Total percentage of detected cuts using HCD for peptide DSTYSLSSTLTLSK: 23.0769% (3/13)
+Total percentage of detected cuts using CID for peptide DSTYSLSSTLTLSK: 38.4615% (5/13)
+
+Total percentage of detected cuts using HCD for peptide DSTYSLSSTLTLSKADYEKHK: 0% (0/20)
+Total percentage of detected cuts using CID for peptide DSTYSLSSTLTLSKADYEKHK: 5% (1/20)
+
+Total percentage of detected cuts using HCD for peptide DTLMISR: 33.3333% (2/6)
+Total percentage of detected cuts using CID for peptide DTLMISR: 33.3333% (2/6)
+
+Total percentage of detected cuts using HCD for peptide EPQVYTLPPSRDELTK: 40% (6/15)
+Total percentage of detected cuts using CID for peptide EPQVYTLPPSRDELTK: 46.6667% (7/15)
+
+Total percentage of detected cuts using HCD for peptide FNWYVDGVEVHNAK: 23.0769% (3/13)
+Total percentage of detected cuts using CID for peptide FNWYVDGVEVHNAK: 69.2308% (9/13)
+
+Total percentage of detected cuts using HCD for peptide FSGSGSGTDFTFTISSLQPEDIATYYCLQHISRPR: 17.6471% (6/34)
+Total percentage of detected cuts using CID for peptide FSGSGSGTDFTFTISSLQPEDIATYYCLQHISRPR: 11.7647% (4/34)
+
+Total percentage of detected cuts using HCD for peptide GFYPSDIAVEWESNGQPENNYK: 4.7619% (1/21)
+Total percentage of detected cuts using CID for peptide GFYPSDIAVEWESNGQPENNYK: 23.8095% (5/21)
+
+Total percentage of detected cuts using HCD for peptide GPSVFPLAPSSK: 18.1818% (2/11)
+Total percentage of detected cuts using CID for peptide GPSVFPLAPSSK: 45.4545% (5/11)
+
+Total percentage of detected cuts using HCD for peptide GQPREPQVYTLPPSRDELTK: 31.5789% (6/19)
+Total percentage of detected cuts using CID for peptide GQPREPQVYTLPPSRDELTK: 21.0526% (4/19)
+
+Total percentage of detected cuts using HCD for peptide GQPREPQVYTLPPSRDELTKNQVSLTCLVK: 41.3793% (12/29)
+Total percentage of detected cuts using CID for peptide GQPREPQVYTLPPSRDELTKNQVSLTCLVK: 6.89655% (2/29)
+
+Total percentage of detected cuts using HCD for peptide GRVTMLVDTSKNQFSLR: 62.5% (10/16)
+Total percentage of detected cuts using CID for peptide GRVTMLVDTSKNQFSLR: 31.25% (5/16)
+
+Total percentage of detected cuts using HCD for peptide GRVTMLVDTSKNQFSLRLSSVTAADTAVYYCAR: 50% (16/32)
+Total percentage of detected cuts using CID for peptide GRVTMLVDTSKNQFSLRLSSVTAADTAVYYCAR: 6.25% (2/32)
+
+Total percentage of detected cuts using HCD for peptide GYTTEYNPSVK: 40% (4/10)
+Total percentage of detected cuts using CID for peptide GYTTEYNPSVK: 20% (2/10)
+
+Total percentage of detected cuts using HCD for peptide GYTTEYNPSVKGR: 8.33333% (1/12)
+Total percentage of detected cuts using CID for peptide GYTTEYNPSVKGR: 0% (0/12)
+
+Total percentage of detected cuts using HCD for peptide GYTTEYNPSVKGRVTMLVDTSKNQFSLR: 14.8148% (4/27)
+Total percentage of detected cuts using CID for peptide GYTTEYNPSVKGRVTMLVDTSKNQFSLR: 0% (0/27)
+
+Total percentage of detected cuts using HCD for peptide HKVYACEVTHQGLSSPVTK: 77.7778% (14/18)
+Total percentage of detected cuts using CID for peptide HKVYACEVTHQGLSSPVTK: 50% (9/18)
+
+Total percentage of detected cuts using HCD for peptide LLIYNTNNLQTGVPSR: 33.3333% (5/15)
+Total percentage of detected cuts using CID for peptide LLIYNTNNLQTGVPSR: 66.6667% (10/15)
+
+Total percentage of detected cuts using HCD for peptide LSSVTAADTAVYYCAR: 26.6667% (4/15)
+Total percentage of detected cuts using CID for peptide LSSVTAADTAVYYCAR: 53.3333% (8/15)
+
+Total percentage of detected cuts using HCD for peptide LTVDKSR: 33.3333% (2/6)
+Total percentage of detected cuts using CID for peptide LTVDKSR: 33.3333% (2/6)
+
+Total percentage of detected cuts using HCD for peptide LTVDKSRWQQGNVFSCSVMHEALHNHYTQK: 6.89655% (2/29)
+Total percentage of detected cuts using CID for peptide LTVDKSRWQQGNVFSCSVMHEALHNHYTQK: 10.3448% (3/29)
+
+Total percentage of detected cuts using HCD for peptide NQVSLTCLVK: 22.2222% (2/9)
+Total percentage of detected cuts using CID for peptide NQVSLTCLVK: 11.1111% (1/9)
+
+Total percentage of detected cuts using HCD for peptide PRTFGQGTKVEIKR: 0% (0/13)
+Total percentage of detected cuts using CID for peptide PRTFGQGTKVEIKR: 0% (0/13)
+
+Total percentage of detected cuts using HCD for peptide RTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAK: 18.9189% (7/37)
+Total percentage of detected cuts using CID for peptide RTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAK: 2.7027% (1/37)
+
+Total percentage of detected cuts using HCD for peptide SFNRGEC: 33.3333% (2/6)
+Total percentage of detected cuts using CID for peptide SFNRGEC: 0% (0/6)
+
+Total percentage of detected cuts using HCD for peptide SGTASVVCLLNNFYPR: 0% (0/15)
+Total percentage of detected cuts using CID for peptide SGTASVVCLLNNFYPR: 0% (0/15)
+
+Total percentage of detected cuts using HCD for peptide SGTASVVCLLNNFYPREAK: 22.2222% (4/18)
+Total percentage of detected cuts using CID for peptide SGTASVVCLLNNFYPREAK: 11.1111% (2/18)
+
+Total percentage of detected cuts using HCD for peptide TFGQGTKVEIK: 40% (4/10)
+Total percentage of detected cuts using CID for peptide TFGQGTKVEIK: 50% (5/10)
+
+Total percentage of detected cuts using HCD for peptide TFGQGTKVEIKR: 27.2727% (3/11)
+Total percentage of detected cuts using CID for peptide TFGQGTKVEIKR: 63.6364% (7/11)
+
+Total percentage of detected cuts using HCD for peptide TPEVTCVVVDVSHEDPEVK: 27.7778% (5/18)
+Total percentage of detected cuts using CID for peptide TPEVTCVVVDVSHEDPEVK: 44.4444% (8/18)
+
+Total percentage of detected cuts using HCD for peptide TPEVTCVVVDVSHEDPEVKFNWYVDGVEVHNAK: 37.5% (12/32)
+Total percentage of detected cuts using CID for peptide TPEVTCVVVDVSHEDPEVKFNWYVDGVEVHNAK: 37.5% (12/32)
+
+Total percentage of detected cuts using HCD for peptide TTPPVLDSDGSFFLYSK: 0% (0/16)
+Total percentage of detected cuts using CID for peptide TTPPVLDSDGSFFLYSK: 18.75% (3/16)
+
+Total percentage of detected cuts using HCD for peptide TVAAPSVFIFPPSDEQLK: 23.5294% (4/17)
+Total percentage of detected cuts using CID for peptide TVAAPSVFIFPPSDEQLK: 11.7647% (2/17)
+
+Total percentage of detected cuts using HCD for peptide TVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPR: 15.1515% (5/33)
+Total percentage of detected cuts using CID for peptide TVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPR: 6.06061% (2/33)
+
+Total percentage of detected cuts using HCD for peptide TVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAK: 16.6667% (6/36)
+Total percentage of detected cuts using CID for peptide TVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAK: 19.4444% (7/36)
+
+Total percentage of detected cuts using HCD for peptide VDKKVEPK: 0% (0/7)
+Total percentage of detected cuts using CID for peptide VDKKVEPK: 0% (0/7)
+
+Total percentage of detected cuts using HCD for peptide VDNALQSGNSQESVTEQDSK: 42.1053% (8/19)
+Total percentage of detected cuts using CID for peptide VDNALQSGNSQESVTEQDSK: 57.8947% (11/19)
+
+Total percentage of detected cuts using HCD for peptide VDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSK: 21.2121% (7/33)
+Total percentage of detected cuts using CID for peptide VDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSK: 60.6061% (20/33)
+
+Total percentage of detected cuts using HCD for peptide VDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEK: 10.5263% (4/38)
+Total percentage of detected cuts using CID for peptide VDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEK: 7.89474% (3/38)
+
+Total percentage of detected cuts using HCD for peptide VQWKVDNALQSGNSQESVTEQDSK: 39.1304% (9/23)
+Total percentage of detected cuts using CID for peptide VQWKVDNALQSGNSQESVTEQDSK: 13.0435% (3/23)
+
+Total percentage of detected cuts using HCD for peptide VQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSK: 32.4324% (12/37)
+Total percentage of detected cuts using CID for peptide VQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSK: 29.7297% (11/37)
+
+Total percentage of detected cuts using HCD for peptide VSNKALPAPIEK: 63.6364% (7/11)
+Total percentage of detected cuts using CID for peptide VSNKALPAPIEK: 36.3636% (4/11)
+
+Total percentage of detected cuts using HCD for peptide VSNKALPAPIEKTISK: 26.6667% (4/15)
+Total percentage of detected cuts using CID for peptide VSNKALPAPIEKTISK: 13.3333% (2/15)
+
+Total percentage of detected cuts using HCD for peptide VSNKALPAPIEKTISKAK: 35.2941% (6/17)
+Total percentage of detected cuts using CID for peptide VSNKALPAPIEKTISKAK: 23.5294% (4/17)
+
+Total percentage of detected cuts using HCD for peptide VSNKALPAPIEKTISKAKGQPR: 19.0476% (4/21)
+Total percentage of detected cuts using CID for peptide VSNKALPAPIEKTISKAKGQPR: 19.0476% (4/21)
+
+Total percentage of detected cuts using HCD for peptide VSNKALPAPIEKTISKAKGQPREPQVYTLPPSRDELTK: 8.10811% (3/37)
+Total percentage of detected cuts using CID for peptide VSNKALPAPIEKTISKAKGQPREPQVYTLPPSRDELTK: 0% (0/37)
+
+Total percentage of detected cuts using HCD for peptide VTITCKASQNIDKYLNWYQQKPGKAPK: 26.9231% (7/26)
+Total percentage of detected cuts using CID for peptide VTITCKASQNIDKYLNWYQQKPGKAPK: 0% (0/26)
+
+Total percentage of detected cuts using HCD for peptide VTMLVDTSK: 50% (4/8)
+Total percentage of detected cuts using CID for peptide VTMLVDTSK: 12.5% (1/8)
+
+Total percentage of detected cuts using HCD for peptide VTMLVDTSKNQFSLR: 28.5714% (4/14)
+Total percentage of detected cuts using CID for peptide VTMLVDTSKNQFSLR: 14.2857% (2/14)
+
+Total percentage of detected cuts using HCD for peptide VYACEVTHQGLSSPVTK: 43.75% (7/16)
+Total percentage of detected cuts using CID for peptide VYACEVTHQGLSSPVTK: 50% (8/16)
+
+Total percentage of detected cuts using HCD for peptide WQQGNVFSCSVMHEALHNHYTQK: 31.8182% (7/22)
+Total percentage of detected cuts using CID for peptide WQQGNVFSCSVMHEALHNHYTQK: 13.6364% (3/22)
+

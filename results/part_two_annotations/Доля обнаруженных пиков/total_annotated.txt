@@ -1,0 +1,50 @@
+Assuming no losses of H2O and NH3 was during experiment!
+
+Total percentage of detected cuts using both HCD and CID: 8.18465% (789/9640)
+Total percentage of detected cuts using CID: 1.6805% (162/9640)
+Total percentage of detected cuts using HCD: 6.50415% (627/9640)
+Total percentage of detected cuts using BOTH methods: 15.1436% (58/383)
+Total percentage of detected cuts with HCD, but not CID methods: 65.7963% (252/383)
+Total percentage of detected cuts with CID, but not HCD methods: 19.0601% (73/383)
+
+
+Assuming H2O was lost!
+
+Total percentage of detected cuts using both HCD and CID: 2.40664% (232/9640)
+Total percentage of detected cuts using CID: 1.10996% (107/9640)
+Total percentage of detected cuts using HCD: 1.29668% (125/9640)
+Total percentage of detected cuts using BOTH methods: 4.48718% (7/156)
+Total percentage of detected cuts with HCD, but not CID methods: 43.5897% (68/156)
+Total percentage of detected cuts with CID, but not HCD methods: 51.9231% (81/156)
+
+
+Assuming NH3 was lost!
+
+Total percentage of detected cuts using both HCD and CID: 1.53527% (148/9640)
+Total percentage of detected cuts using CID: 0.860996% (83/9640)
+Total percentage of detected cuts using HCD: 0.674274% (65/9640)
+Total percentage of detected cuts using BOTH methods: 5.26316% (5/95)
+Total percentage of detected cuts with HCD, but not CID methods: 31.5789% (30/95)
+Total percentage of detected cuts with CID, but not HCD methods: 63.1579% (60/95)
+
+
+Assuming H2O and NH3 was lost!
+
+Total percentage of detected cuts using both HCD and CID: 0.653527% (63/9640)
+Total percentage of detected cuts using CID: 0.446058% (43/9640)
+Total percentage of detected cuts using HCD: 0.207469% (20/9640)
+Total percentage of detected cuts using BOTH methods: 7.54717% (4/53)
+Total percentage of detected cuts with HCD, but not CID methods: 22.6415% (12/53)
+Total percentage of detected cuts with CID, but not HCD methods: 69.8113% (37/53)
+
+
+Assuming all avaliable detections!
+
+Total percentage of detected cuts using both HCD and CID: 12.7801% (1232/9640)
+Total percentage of detected cuts using CID: 4.09751% (395/9640)
+Total percentage of detected cuts using HCD: 8.68257% (837/9640)
+Total percentage of detected cuts using BOTH methods: 22.7181% (112/493)
+Total percentage of detected cuts with HCD, but not CID methods: 48.6815% (240/493)
+Total percentage of detected cuts with CID, but not HCD methods: 28.6004% (141/493)
+
+
